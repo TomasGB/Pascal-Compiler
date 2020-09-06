@@ -32,8 +32,6 @@ begin
    digitos:=['0','1','2','3','4','5','6','7','8','9'];
    letras:=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 
-
-
    for lineaArchivo:=0 to Lista.count-1 do
       begin
             linea:=Lista.Strings[lineaArchivo];
@@ -96,8 +94,16 @@ begin
                                                 acum:=acum+linea[it];
                                                 it:=it+1;
                                               end;
-                                            writeln('['+STRING_Token+' , ',acum,' ]');
-                                            k:=it;
+                                              if (acum ='begin') or (acum = 'end') or (acum = 'function') or (acum = 'procedure' )or (acum = 'if' )or (acum = 'else' )or (acum = 'for') or (acum = 'while') or (acum = 'repeat') or (acum = 'do') or (acum = 'until')or (acum = 'to')or( acum = 'down')or (acum = 'type')or (acum = 'const')or (acum = 'var')or (acum = 'uses')or (acum = 'program' )then
+                                                begin
+                                                    writeln('['+KEYWORD_Token+' , ',acum,' ]');
+                                                    k:=it;
+                                                end
+                                              else
+                                                begin
+                                                    writeln('['+STRING_Token+' , ',acum,' ]');
+                                                    k:=it;
+                                                end;
                                         end
                                     else k:=k+1;
 
